@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)file:///C:/Users/DeMoss%20CNC/Downloads/ai-sample-documents.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI In Action — Sample Outputs | Scenic City Technology</title>
+<link href="./AI In Action - Sample Outputs _ Scenic City Technology_files/css2" rel="stylesheet">
+<style>
+:root {
+  --bg: #F4F1EC;
+  --surface: #FFFDF9;
+  --navy: #1B2D45;
+  --navy-mid: #2A4060;
+  --gold: #C8982E;
+  --gold-light: #F5E6C4;
+  --gold-pale: #FBF4E4;
+  --sage: #5E8C62;
+  --sage-light: #E8F0E9;
+  --blue: #4A7BA7;
+  --blue-light: #E3EDF5;
+  --red: #C0453A;
+  --red-light: #FEF0EE;
+  --red-pale: #FDDDD8;
+  --amber: #B8860B;
+  --amber-light: #FFF8ED;
+  --green: #2D8A4E;
+  --green-light: #E6F5EC;
+  --text: #2C2C2C;
+  --text-mid: #5A5A5A;
+  --text-light: #8A8A8A;
+  --border: #E2DDD5;
+  --border-light: #EEEAE3;
+  --mono: 'JetBrains Mono', monospace;
+  --shadow-sm: 0 1px 4px rgba(27,45,69,0.06);
+  --shadow-md: 0 6px 24px rgba(27,45,69,0.09);
+  --shadow-lg: 0 12px 40px rgba(27,45,69,0.13);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+/* ── HERO ── */
+.hero{background:var(--navy);color:#fff;padding:2.5rem 2rem 4.5rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath d='M0,80 L0,50 Q200,10 400,40 Q600,70 800,30 Q1000,0 1200,35 Q1350,55 1440,40 L1440,80Z' fill='%23F4F1EC'/%3E%3C/svg%3E") no-repeat bottom center/cover}
+.hero-inner{max-width:920px;margin:0 auto;position:relative;z-index:1}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:2rem;opacity:0;animation:fadeUp .5s ease forwards}
+.brand-row span{font-family:'Fraunces',serif;font-size:1rem;color:rgba(255,255,255,.8)}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:500;line-height:1.2;margin-bottom:.75rem;opacity:0;animation:fadeUp .5s ease .1s forwards}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-weight:300;font-size:1.05rem;color:rgba(255,255,255,.65);max-width:620px;opacity:0;animation:fadeUp .5s ease .2s forwards}
+
+/* ── NAV TABS ── */
+.wrap{max-width:1020px;margin:-1rem auto 0;padding:0 1.5rem 4rem;position:relative;z-index:2}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
+.tab{padding:11px 20px;border-radius:50px;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;border:1.5px solid var(--border);background:var(--surface);color:var(--text-mid);cursor:pointer;transition:all .25s ease;box-shadow:var(--shadow-sm)}
+.tab:hover{border-color:var(--gold);color:var(--navy);transform:translateY(-1px)}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* ── SECTION PANELS ── */
+.sec{display:none;animation:fadeIn .35s ease}
+.sec.active{display:block}
+
+/* ── DOCUMENT MOCKUPS ── */
+.doc-pair{margin-bottom:2.5rem}
+.doc-pair-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-light);margin-bottom:.75rem;display:flex;align-items:center;gap:8px}
+.doc-pair-label .dot{width:8px;height:8px;border-radius:50%}
+.dot.before{background:var(--red)}
+.dot.after{background:var(--green)}
+.dot.nfc{background:var(--blue)}
+
+.doc-frame{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md)}
+.doc-titlebar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--border-light);border-bottom:1px solid var(--border)}
+.doc-titlebar .circles{display:flex;gap:5px}
+.doc-titlebar .circles span{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.doc-titlebar .fname{font-family:var(--mono);font-size:.72rem;color:var(--text-light);margin-left:4px}
+.doc-body{padding:1.75rem 2rem}
+
+/* ── SHARED DOC ELEMENTS ── */
+.doc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:12px}
+.doc-header h3{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:500;color:var(--navy)}
+.doc-header .meta{font-size:.78rem;color:var(--text-light);text-align:right}
+.doc-header .meta strong{color:var(--text-mid)}
+.status-pill{display:inline-block;padding:4px 12px;border-radius:30px;font-size:.72rem;font-weight:700;letter-spacing:.03em}
+.status-pill.pass{background:var(--green-light);color:var(--green)}
+.status-pill.warn{background:var(--amber-light);color:var(--amber)}
+.status-pill.fail{background:var(--red-light);color:var(--red)}
+.status-pill.info{background:var(--blue-light);color:var(--blue)}
+
+/* ── TABLES ── */
+.doc-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:1rem 0}
+.doc-table th{text-align:left;padding:8px 12px;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);border-bottom:2px solid var(--border);background:var(--bg)}
+.doc-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);vertical-align:top}
+.doc-table tr:last-child td{border-bottom:none}
+.doc-table .flag{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:600}
+.flag.err{background:var(--red-light);color:var(--red)}
+.flag.ok{background:var(--green-light);color:var(--green)}
+.flag.pending{background:var(--amber-light);color:var(--amber)}
+.flag.match{background:var(--green-light);color:var(--green)}
+.flag.mismatch{background:var(--red-light);color:var(--red)}
+.doc-table .mono{font-family:var(--mono);font-size:.82rem}
+.doc-table .strike{text-decoration:line-through;color:var(--text-light)}
+.doc-table .corrected{color:var(--green);font-weight:600}
+.doc-table .highlight-row{background:var(--gold-pale)}
+
+/* ── STAT BARS ── */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:1rem 0}
+.stat-box{padding:14px 16px;border-radius:var(--radius-sm);background:var(--bg);text-align:center}
+.stat-box .num{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;line-height:1.1}
+.stat-box .num.green{color:var(--green)}
+.stat-box .num.amber{color:var(--amber)}
+.stat-box .num.red{color:var(--red)}
+.stat-box .num.blue{color:var(--blue)}
+.stat-box .lbl{font-size:.72rem;color:var(--text-light);font-weight:500;margin-top:2px}
+
+/* ── TIMELINE / ACTIVITY LOG ── */
+.activity-log{display:flex;flex-direction:column;gap:0}
+.log-entry{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--border-light)}
+.log-entry:last-child{border-bottom:none}
+.log-time{font-family:var(--mono);font-size:.78rem;color:var(--text-light);min-width:60px;padding-top:2px}
+.log-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.75rem}
+.log-icon.feed{background:var(--amber-light);color:var(--amber)}
+.log-icon.play{background:var(--green-light);color:var(--green)}
+.log-icon.med{background:var(--red-light);color:var(--red)}
+.log-icon.note{background:var(--blue-light);color:var(--blue)}
+.log-icon.nfc{background:#E8E0F0;color:#7B5EA7}
+.log-text{font-size:.88rem;color:var(--text-mid)}
+.log-text strong{color:var(--text);font-weight:600}
+.log-nfc-badge{display:inline-block;padding:1px 7px;border-radius:4px;font-size:.68rem;font-weight:700;background:#E8E0F0;color:#7B5EA7;margin-left:4px;vertical-align:middle}
+
+/* ── NFC SECTION ── */
+.nfc-section{margin-top:3rem}
+.nfc-header{text-align:center;margin-bottom:2rem}
+.nfc-header h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:500;color:var(--navy);margin-bottom:.4rem}
+.nfc-header p{color:var(--text-mid);font-size:1rem;max-width:600px;margin:0 auto}
+.nfc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.nfc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;box-shadow:var(--shadow-sm);transition:all .3s ease;position:relative;overflow:hidden}
+.nfc-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.nfc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.nfc-card.kennel::before{background:linear-gradient(90deg,var(--sage),var(--green))}
+.nfc-card.cpa::before{background:linear-gradient(90deg,var(--gold),var(--amber))}
+.nfc-card.insurance::before{background:linear-gradient(90deg,var(--blue),#5B9BC9)}
+.nfc-card.service::before{background:linear-gradient(90deg,var(--red),#D4756A)}
+.nfc-card .industry-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.nfc-card.kennel .industry-tag{color:var(--sage)}
+.nfc-card.cpa .industry-tag{color:var(--gold)}
+.nfc-card.insurance .industry-tag{color:var(--blue)}
+.nfc-card.service .industry-tag{color:var(--red)}
+.nfc-card h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;color:var(--navy);margin-bottom:.5rem}
+.nfc-card p{font-size:.88rem;color:var(--text-mid);line-height:1.55}
+.nfc-chip-visual{display:flex;align-items:center;gap:8px;margin-top:1rem;padding:10px 14px;background:var(--bg);border-radius:var(--radius-sm);font-size:.78rem;color:var(--text-mid)}
+.nfc-chip-visual .chip-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#E8E0F0,#D4C8E8);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nfc-chip-visual .chip-icon svg{width:18px;height:18px;stroke:#7B5EA7;stroke-width:1.8;fill:none}
+
+/* ── EMAIL/SMS MOCKUP ── */
+.msg-mockup{background:var(--bg);border-radius:var(--radius-sm);padding:1.25rem 1.5rem;margin:1rem 0}
+.msg-mockup .msg-from{font-size:.78rem;color:var(--text-light);margin-bottom:.5rem}
+.msg-mockup .msg-from strong{color:var(--text-mid)}
+.msg-mockup .msg-subject{font-weight:600;font-size:.95rem;color:var(--navy);margin-bottom:.75rem}
+.msg-mockup .msg-body{font-size:.88rem;color:var(--text-mid);line-height:1.65}
+.msg-mockup .msg-body p{margin-bottom:.5rem}
+.msg-photo-placeholder{width:100%;height:100px;background:linear-gradient(135deg,var(--sage-light),var(--green-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--sage);font-size:.82rem;font-weight:500;margin:.75rem 0}
+
+/* ── QUOTE COMPARISON ── */
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin:1rem 0}
+.quote-col{padding:0}
+.quote-col-header{padding:12px 14px;text-align:center;font-weight:700;font-size:.82rem;border-bottom:1px solid var(--border)}
+.quote-col:nth-child(1) .quote-col-header{background:var(--blue-light);color:var(--blue)}
+.quote-col:nth-child(2) .quote-col-header{background:var(--green-light);color:var(--green)}
+.quote-col:nth-child(3) .quote-col-header{background:var(--amber-light);color:var(--amber)}
+.quote-row{padding:10px 14px;font-size:.82rem;border-bottom:1px solid var(--border-light);display:flex;justify-content:space-between}
+.quote-row:last-child{border-bottom:none}
+.quote-row .qlabel{color:var(--text-light);font-size:.75rem}
+.quote-row .qval{font-weight:600;color:var(--text)}
+.best-value{background:var(--green-light) !important}
+.best-value .qval{color:var(--green) !important}
+.ai-note{background:var(--gold-pale);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.82rem;color:var(--text-mid);margin:1rem 0;display:flex;gap:8px;align-items:flex-start}
+.ai-note .ai-icon{font-size:1rem;flex-shrink:0}
+
+/* ── ROUTE MAP ── */
+.route-visual{background:linear-gradient(145deg,#E8F0E9,#D8E8DA);border-radius:var(--radius-sm);padding:1.5rem;margin:1rem 0;position:relative}
+.route-stops{display:flex;flex-direction:column;gap:0}
+.route-stop{display:flex;align-items:flex-start;gap:12px;padding:8px 0}
+.route-num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;position:relative}
+.route-num::after{content:'';position:absolute;top:28px;left:50%;width:2px;height:20px;background:var(--navy);opacity:.2}
+.route-stop:last-child .route-num::after{display:none}
+.route-info{flex:1}
+.route-info .rname{font-weight:600;font-size:.88rem;color:var(--navy)}
+.route-info .rdetail{font-size:.78rem;color:var(--text-mid)}
+.route-savings{text-align:center;margin-top:1rem;padding:10px;background:rgba(255,255,255,.6);border-radius:var(--radius-sm)}
+.route-savings .big{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--green)}
+.route-savings .small{font-size:.78rem;color:var(--text-mid)}
+
+/* ── CTA ── */
+.cta{margin-top:3rem;background:var(--navy);border-radius:var(--radius);padding:2.5rem;text-align:center;color:#fff;box-shadow:var(--shadow-lg)}
+.cta h3{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;margin-bottom:.4rem}
+.cta p{color:rgba(255,255,255,.6);margin-bottom:1.5rem}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 26px;border-radius:50px;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
+.btn.gold{background:var(--gold);color:#fff}.btn.gold:hover{background:#B8891F}
+.btn.outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}.btn.outline:hover{border-color:rgba(255,255,255,.6)}
+
+.footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.82rem}
+.footer a{color:var(--sage);text-decoration:none}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){
+  .wrap{padding:0 1rem 3rem}
+  .doc-body{padding:1.25rem}
+  .quote-grid{grid-template-columns:1fr;gap:1px}
+  .nfc-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="brand-row">
+      <svg width="22" height="22" viewBox="0 0 26 26" fill="none"><path d="M3 20L9 10L14 16L19 8L23 14" stroke="#C8982E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span>Scenic City Technology</span>
+    </div>
+    <h1>AI <em>In Action</em> — Sample Outputs</h1>
+    <p class="hero-sub">These are examples of what AI-powered workflows actually produce. Real formats, real data patterns, real time savings — tailored for your industry.</p>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="tabs">
+    <button class="tab active" data-s="kennel">Edenthistle Dog Kennel</button>
+    <button class="tab" data-s="cpa">CPA / Accounting</button>
+    <button class="tab" data-s="insurance">Insurance Agency</button>
+    <button class="tab" data-s="service">Local Service Co.</button>
+    <button class="tab" data-s="nfc">NFC Smart Tags</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- EDENTHISTLE KENNEL -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="sec active" id="s-kennel">
+
+    <!-- Doc 1: Pet Check-In Profile -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI-Generated Check-In Brief</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">checkin_brief_buddy_martinez_2026-03-13.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <div>
+              <h3>Boarding Check-In Brief</h3>
+              <div style="font-size:.85rem;color:var(--text-mid);margin-top:4px">Buddy Martinez &nbsp;·&nbsp; Golden Retriever, Male, 4 yrs &nbsp;·&nbsp; 72 lbs</div>
+            </div>
+            <div class="meta">
+              <strong>Check-in:</strong> Mar 13, 2026<br>
+              <strong>Pickup:</strong> Mar 18, 2026 (5 nights)<br>
+              <span class="status-pill warn">1 Alert</span>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-box"><div class="num green">✓</div><div class="lbl">Rabies — Valid</div></div>
+            <div class="stat-box"><div class="num green">✓</div><div class="lbl">DHPP — Valid</div></div>
+            <div class="stat-box"><div class="num amber">⚠</div><div class="lbl">Bordetella — Exp 3/15</div></div>
+            <div class="stat-box"><div class="num green">✓</div><div class="lbl">Flea/Tick — Current</div></div>
+          </div>
+
+          <div class="ai-note">
+            <span class="ai-icon">⚠️</span>
+            <div><strong>AI Alert:</strong> Bordetella vaccination expires during this stay (3/15). Owner was auto-notified on 3/10. Updated records not yet received. <strong>Action required:</strong> Confirm with owner at drop-off or contact vet at Brainerd Animal Hospital (423-555-0188).</div>
+          </div>
+
+          <table class="doc-table">
+            <tbody><tr><th colspan="2">Care Instructions (from owner profile)</th></tr>
+            <tr><td style="width:140px;font-weight:600">Feeding</td><td>2 cups Blue Buffalo Chicken &amp; Rice, AM and PM. <strong>No table scraps — sensitive stomach.</strong></td></tr>
+            <tr><td style="font-weight:600">Medications</td><td>Cosequin joint supplement — 1 chewable tablet with AM meal</td></tr>
+            <tr><td style="font-weight:600">Behavior Notes</td><td><span class="flag err">Resource guarder</span> Do NOT feed in group setting. Uses separate feeding room (Run area B).</td></tr>
+            <tr><td style="font-weight:600">Play Groups</td><td>Good with large breed group. Avoid pairing with intact males (reactive).</td></tr>
+            <tr><td style="font-weight:600">Owner Contact</td><td>Maria Martinez — (423) 555-0142 · maria.m@email.com</td></tr>
+            <tr><td style="font-weight:600">Emergency Vet</td><td>Brainerd Animal Hospital — (423) 555-0188</td></tr>
+          </tbody></table>
+
+          <div style="font-size:.78rem;color:var(--text-light);margin-top:1rem;text-align:right">Auto-generated from Buddy's pet profile · 12 previous stays on file · Last boarding: Dec 22–27, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 2: Daily Owner Update -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> Auto-Sent Daily Owner Update</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">owner_update_sms_preview.msg</span>
+        </div>
+        <div class="doc-body">
+          <div class="msg-mockup" style="background:var(--surface);border:1px solid var(--border)">
+            <div class="msg-from">From: <strong>Edenthistle Dog Kennel</strong> &nbsp;·&nbsp; Sent 2:15 PM today</div>
+            <div class="msg-subject">Buddy's Daily Report — Day 2 of 5</div>
+            <div class="msg-body">
+              <p>Hi Maria! Here's Buddy's update for today:</p>
+              <div class="msg-photo-placeholder">📸 &nbsp; [Photo: Buddy playing in the yard with two other goldens]</div>
+              <p><strong>Morning:</strong> Breakfast at 7:00am (ate everything + supplement ✓). Played in large breed group 9:30–10:30am — he's made a friend with a Lab named Duke!</p>
+              <p><strong>Afternoon:</strong> Nap time after lunch. Fed separately in Run B per his care plan. Drinking water normally.</p>
+              <p><strong>Mood:</strong> Relaxed and happy. Tail wagging at every staff member. 🐶</p>
+              <p style="font-size:.82rem;color:var(--text-light);margin-top:1rem">— Edenthistle Dog Kennel, Chattanooga TN<br>Questions? Reply to this message or call (423) 555-0199</p>
+            </div>
+          </div>
+          <div style="font-size:.78rem;color:var(--text-light);margin-top:.75rem">⚡ AI auto-generated from staff activity logs and NFC tap entries. Staff time to produce: ~30 seconds (photo only).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 3: NFC Activity Log -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot nfc"></span> NFC Tap Activity Log — Today's Entries</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">nfc_activity_log_2026-03-13.json</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <h3>Run #7 — Buddy Martinez</h3>
+            <span class="status-pill info">6 NFC Taps Today</span>
+          </div>
+          <div class="activity-log">
+            <div class="log-entry">
+              <div class="log-time">6:52a</div>
+              <div class="log-icon nfc">⚪</div>
+              <div class="log-text"><strong>Sarah K.</strong> tapped into Run #7 <span class="log-nfc-badge">NFC</span> — Morning wellness check. Notes: "Sleeping, looks good."</div>
+            </div>
+            <div class="log-entry">
+              <div class="log-time">7:04a</div>
+              <div class="log-icon feed">🍽</div>
+              <div class="log-text"><strong>Sarah K.</strong> logged feeding <span class="log-nfc-badge">NFC</span> — 2 cups Blue Buffalo + Cosequin tablet. Fed in Run B (separate).</div>
+            </div>
+            <div class="log-entry">
+              <div class="log-time">7:22a</div>
+              <div class="log-icon feed">🍽</div>
+              <div class="log-text">AI confirmed: Bowl empty at 7:22am. <span class="flag ok">Full meal consumed</span></div>
+            </div>
+            <div class="log-entry">
+              <div class="log-time">9:31a</div>
+              <div class="log-icon play">🎾</div>
+              <div class="log-text"><strong>Jake R.</strong> moved Buddy to yard group A <span class="log-nfc-badge">NFC</span> — Large breed playtime. 4 dogs in group.</div>
+            </div>
+            <div class="log-entry">
+              <div class="log-time">10:28a</div>
+              <div class="log-icon play">🎾</div>
+              <div class="log-text"><strong>Jake R.</strong> returned Buddy to Run #7 <span class="log-nfc-badge">NFC</span> — 57 min play session logged.</div>
+            </div>
+            <div class="log-entry">
+              <div class="log-time">12:10p</div>
+              <div class="log-icon note">📝</div>
+              <div class="log-text"><strong>Sarah K.</strong> added note <span class="log-nfc-badge">NFC</span> — "Buddy is relaxed, napping. No concerns."</div>
+            </div>
+          </div>
+          <div style="margin-top:1.25rem;padding:12px 14px;background:var(--bg);border-radius:var(--radius-sm);font-size:.82rem;color:var(--text-mid)">
+            <strong>How it works:</strong> Each kennel run has an NFC tag on the door. Staff tap their phone when they interact with a dog — feeding, play, meds, or wellness checks. The system auto-logs who, what, and when. These entries feed directly into the daily owner update and create an auditable care record.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- CPA / ACCOUNTING -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="sec" id="s-cpa">
+
+    <!-- Doc 1: Reconciliation Report -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI Reconciliation Report</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">recon_report_daniels_plumbing_feb2026.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <div>
+              <h3>Bank Reconciliation — February 2026</h3>
+              <div style="font-size:.85rem;color:var(--text-mid);margin-top:4px">Daniels Plumbing LLC &nbsp;·&nbsp; First Horizon Checking ****4821</div>
+            </div>
+            <div class="meta">
+              <strong>Prepared:</strong> Mar 4, 2026<br>
+              <strong>AI Confidence:</strong> 97.2%<br>
+              <span class="status-pill warn">3 Items Need Review</span>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-box"><div class="num blue">218</div><div class="lbl">Total Transactions</div></div>
+            <div class="stat-box"><div class="num green">211</div><div class="lbl">Auto-Matched</div></div>
+            <div class="stat-box"><div class="num amber">4</div><div class="lbl">Suggested Match</div></div>
+            <div class="stat-box"><div class="num red">3</div><div class="lbl">Needs Review</div></div>
+          </div>
+
+          <table class="doc-table">
+            <tbody><tr><th>Date</th><th>Description</th><th>Amount</th><th>QB Entry</th><th>Status</th></tr>
+            <tr><td class="mono">02/04</td><td>Ferguson Supply #4412</td><td class="mono">-$1,247.50</td><td>PO-2026-0088</td><td><span class="flag ok">✓ Matched</span></td></tr>
+            <tr><td class="mono">02/11</td><td>Zelle — J. Whitaker</td><td class="mono">+$425.00</td><td>INV-1184</td><td><span class="flag ok">✓ Matched</span></td></tr>
+            <tr class="highlight-row"><td class="mono">02/14</td><td>Home Depot #0552</td><td class="mono">-$312.88</td><td>—</td><td><span class="flag err">⚠ No QB entry</span></td></tr>
+            <tr class="highlight-row"><td class="mono">02/19</td><td>Square Payment</td><td class="mono">+$2,100.00</td><td>INV-1192 ($1,800)</td><td><span class="flag err">⚠ Amount mismatch</span></td></tr>
+            <tr class="highlight-row"><td class="mono">02/22</td><td>Amazon Business</td><td class="mono">-$89.43</td><td>—</td><td><span class="flag err">⚠ No QB entry</span></td></tr>
+            <tr><td class="mono">02/27</td><td>AT&amp;T Wireless</td><td class="mono">-$187.33</td><td>Recurring exp.</td><td><span class="flag ok">✓ Matched</span></td></tr>
+          </tbody></table>
+
+          <div class="ai-note">
+            <span class="ai-icon">💡</span>
+            <div><strong>AI Suggestion for INV-1192:</strong> The $300 difference between the bank deposit ($2,100) and invoice ($1,800) may be a late fee or second payment consolidated by Square. Recommend checking Square dashboard for itemized payout details.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 2: Pre-File Error Scan -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI Pre-File Error Detection Report</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">prefile_scan_chen_household_2025.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <div>
+              <h3>Pre-Filing Quality Check</h3>
+              <div style="font-size:.85rem;color:var(--text-mid);margin-top:4px">David &amp; Lisa Chen &nbsp;·&nbsp; 2025 Joint Return (1040)</div>
+            </div>
+            <span class="status-pill fail">2 Errors Found</span>
+          </div>
+
+          <table class="doc-table">
+            <tbody><tr><th>Check</th><th>Detail</th><th>Result</th></tr>
+            <tr><td style="font-weight:600">SSN Validation</td><td>All SSNs match prior year and W-2s</td><td><span class="flag ok">✓ Pass</span></td></tr>
+            <tr><td style="font-weight:600">W-2 Income Match</td><td>Box 1 totals match Line 1a ($142,880)</td><td><span class="flag ok">✓ Pass</span></td></tr>
+            <tr class="highlight-row"><td style="font-weight:600">1099-NEC vs Sch C</td><td>1099-NEC total: $18,400. Schedule C line 1: <span class="strike">$17,200</span> <span class="corrected">→ $18,400</span></td><td><span class="flag err">⚠ Mismatch</span></td></tr>
+            <tr><td style="font-weight:600">Dependent SSNs</td><td>2 dependents — no duplicate filings detected</td><td><span class="flag ok">✓ Pass</span></td></tr>
+            <tr class="highlight-row"><td style="font-weight:600">Schedule A vs Std Ded</td><td>Itemized total ($24,200) is <strong>less</strong> than standard deduction ($30,000). Taxpayer would save $1,508 by switching.</td><td><span class="flag err">⚠ Suboptimal</span></td></tr>
+            <tr><td style="font-weight:600">Prior Year Comparison</td><td>AGI within 12% of 2024 — reasonable</td><td><span class="flag ok">✓ Pass</span></td></tr>
+            <tr><td style="font-weight:600">Bank Routing / Acct</td><td>Direct deposit info matches 2024 return</td><td><span class="flag ok">✓ Pass</span></td></tr>
+          </tbody></table>
+
+          <div class="ai-note">
+            <span class="ai-icon">💰</span>
+            <div><strong>AI found a savings opportunity:</strong> The Chens are itemizing at $24,200 but the standard deduction is $30,000 this year. Switching would reduce their taxable income by $5,800 — approximately $1,508 in tax savings. Recommend reviewing with the client before filing.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- INSURANCE -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="sec" id="s-insurance">
+
+    <!-- Doc 1: Quote Comparison -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI-Generated Quote Comparison</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">quote_comparison_wilson_homeowner_2026.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <div>
+              <h3>Homeowner Policy Comparison</h3>
+              <div style="font-size:.85rem;color:var(--text-mid);margin-top:4px">Robert Wilson &nbsp;·&nbsp; 1847 Scenic Hills Dr, Signal Mountain, TN</div>
+            </div>
+            <div class="meta"><strong>Prepared:</strong> Mar 12, 2026<br><strong>Dwelling Value:</strong> $385,000</div>
+          </div>
+
+          <div class="quote-grid">
+            <div class="quote-col">
+              <div class="quote-col-header">Encompass</div>
+              <div class="quote-row"><span class="qlabel">Annual Premium</span><span class="qval">$2,180</span></div>
+              <div class="quote-row"><span class="qlabel">Deductible</span><span class="qval">$1,500</span></div>
+              <div class="quote-row"><span class="qlabel">Dwelling Coverage</span><span class="qval">$385,000</span></div>
+              <div class="quote-row"><span class="qlabel">Personal Property</span><span class="qval">$192,500</span></div>
+              <div class="quote-row"><span class="qlabel">Liability</span><span class="qval">$300,000</span></div>
+              <div class="quote-row"><span class="qlabel">Flood Coverage</span><span class="qval" style="color:var(--red);font-weight:700">Not Included</span></div>
+              <div class="quote-row"><span class="qlabel">Wind/Hail</span><span class="qval">Included</span></div>
+            </div>
+            <div class="quote-col">
+              <div class="quote-col-header">Auto-Owners ★</div>
+              <div class="quote-row best-value"><span class="qlabel">Annual Premium</span><span class="qval">$1,940</span></div>
+              <div class="quote-row"><span class="qlabel">Deductible</span><span class="qval">$1,000</span></div>
+              <div class="quote-row"><span class="qlabel">Dwelling Coverage</span><span class="qval">$385,000</span></div>
+              <div class="quote-row"><span class="qlabel">Personal Property</span><span class="qval">$192,500</span></div>
+              <div class="quote-row"><span class="qlabel">Liability</span><span class="qval">$500,000</span></div>
+              <div class="quote-row"><span class="qlabel">Flood Coverage</span><span class="qval">$50k add-on avail.</span></div>
+              <div class="quote-row"><span class="qlabel">Wind/Hail</span><span class="qval">Included</span></div>
+            </div>
+            <div class="quote-col">
+              <div class="quote-col-header">Safeco</div>
+              <div class="quote-row"><span class="qlabel">Annual Premium</span><span class="qval">$2,410</span></div>
+              <div class="quote-row"><span class="qlabel">Deductible</span><span class="qval">$2,500</span></div>
+              <div class="quote-row"><span class="qlabel">Dwelling Coverage</span><span class="qval">$385,000</span></div>
+              <div class="quote-row"><span class="qlabel">Personal Property</span><span class="qval">$250,000</span></div>
+              <div class="quote-row"><span class="qlabel">Liability</span><span class="qval">$300,000</span></div>
+              <div class="quote-row"><span class="qlabel">Flood Coverage</span><span class="qval">Included (basic)</span></div>
+              <div class="quote-row"><span class="qlabel">Wind/Hail</span><span class="qval">2% sep. deductible</span></div>
+            </div>
+          </div>
+
+          <div class="ai-note">
+            <span class="ai-icon">⭐</span>
+            <div><strong>AI Recommendation:</strong> Auto-Owners offers the best overall value — lowest premium, lowest deductible, and highest liability limit. However, the Wilson property is in a Zone X flood area near the base of Signal Mountain. If flood coverage is a priority, Safeco includes basic flood but at a $470/yr premium increase. Recommend discussing flood risk tolerance with the client.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 2: Renewal Pipeline -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI Renewal Pipeline — Auto-Generated Outreach</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">renewal_pipeline_q2_2026.csv</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <h3>Q2 2026 Renewal Pipeline</h3>
+            <div class="meta"><strong>Policies renewing:</strong> 34<br><strong>Auto-contacted:</strong> 28 of 34</div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-box"><div class="num blue">34</div><div class="lbl">Total Renewals</div></div>
+            <div class="stat-box"><div class="num green">12</div><div class="lbl">Reviewed &amp; Renewed</div></div>
+            <div class="stat-box"><div class="num amber">16</div><div class="lbl">Outreach In Progress</div></div>
+            <div class="stat-box"><div class="num red">6</div><div class="lbl">At Risk / No Response</div></div>
+          </div>
+
+          <table class="doc-table">
+            <tbody><tr><th>Client</th><th>Policy Type</th><th>Renewal Date</th><th>Stage</th><th>Last AI Action</th></tr>
+            <tr><td>J. Whitfield</td><td>Homeowner</td><td class="mono">Apr 1</td><td><span class="flag ok">Renewed</span></td><td>Confirmation email sent 3/10</td></tr>
+            <tr><td>M. Patel</td><td>Commercial Auto</td><td class="mono">Apr 8</td><td><span class="flag pending">60-day email</span></td><td>Review link clicked, no reply yet</td></tr>
+            <tr><td>R. Thompson</td><td>BOP</td><td class="mono">Apr 15</td><td><span class="flag pending">90-day email</span></td><td>Opened email, clicked schedule link</td></tr>
+            <tr><td>Scenic Signs LLC</td><td>GL + WC</td><td class="mono">May 1</td><td><span class="flag err">At Risk</span></td><td>3 emails sent, 0 opens. Flag for phone call.</td></tr>
+            <tr><td>K. Donovan</td><td>Homeowner</td><td class="mono">May 12</td><td><span class="flag ok">Renewed</span></td><td>Auto-renewed, no changes requested</td></tr>
+          </tbody></table>
+
+          <div class="ai-note">
+            <span class="ai-icon">📞</span>
+            <div><strong>AI Priority Flag:</strong> Scenic Signs LLC has not opened any of 3 renewal emails. Their GL + Workers Comp package ($8,400/yr) is your highest-premium Q2 renewal. Recommend a direct phone call this week — AI has drafted a voicemail script and talking points based on their policy history.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- LOCAL SERVICE -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="sec" id="s-service">
+
+    <!-- Doc 1: Route Schedule -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> AI-Optimized Daily Route</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">route_schedule_tue_mar17_crew_a.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <div>
+              <h3>Tuesday, March 17 — Crew A</h3>
+              <div style="font-size:.85rem;color:var(--text-mid);margin-top:4px">Chattanooga Window Pros &nbsp;·&nbsp; 6 jobs, North Shore / Red Bank route</div>
+            </div>
+            <div class="meta"><strong>Crew:</strong> Marcus T. + Devon R.<br><strong>Vehicle:</strong> Van #2</div>
+          </div>
+
+          <div class="route-visual">
+            <div class="route-stops">
+              <div class="route-stop">
+                <div class="route-num">1</div>
+                <div class="route-info"><div class="rname">Henderson Residence</div><div class="rdetail">412 Tremont St, Red Bank · 8:00am · Est. 45 min · 22 windows (exterior only)</div></div>
+              </div>
+              <div class="route-stop">
+                <div class="route-num">2</div>
+                <div class="route-info"><div class="rname">Rivermont Dental Office</div><div class="rdetail">1800 Dayton Blvd, Red Bank · 9:00am · Est. 1.5 hr · Full interior + exterior · <strong>Key code: 4821#</strong></div></div>
+              </div>
+              <div class="route-stop">
+                <div class="route-num">3</div>
+                <div class="route-info"><div class="rname">Patel Residence</div><div class="rdetail">207 Lyndhurst Dr, Red Bank · 10:45am · Est. 1 hr · Repeat monthly · Note: use side gate</div></div>
+              </div>
+              <div class="route-stop">
+                <div class="route-num">4</div>
+                <div class="route-info"><div class="rname">Signal Mtn Coffee Co.</div><div class="rdetail">1205 Taft Hwy, Signal Mtn · 12:15pm · Est. 45 min · Storefront only · After lunch rush</div></div>
+              </div>
+              <div class="route-stop">
+                <div class="route-num">5</div>
+                <div class="route-info"><div class="rname">Brooks Residence</div><div class="rdetail">3380 Mississippi Ave, Signal Mtn · 1:15pm · Est. 1.25 hr · 2-story, 34 windows · Ladder required</div></div>
+              </div>
+              <div class="route-stop">
+                <div class="route-num">6</div>
+                <div class="route-info"><div class="rname">Anderson Law Group</div><div class="rdetail">4500 Hixson Pike, Hixson · 3:00pm · Est. 1 hr · Quarterly contract · Invoice on-site</div></div>
+              </div>
+            </div>
+            <div class="route-savings">
+              <div class="big">42 min saved</div>
+              <div class="small">vs. original booking order · 18.3 fewer miles driven</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 2: Auto-Invoice -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot after"></span> Auto-Generated Invoice (sent on job completion)</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">invoice_CWP-2026-0394_anderson_law.pdf</span>
+        </div>
+        <div class="doc-body">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:1.5rem">
+            <div>
+              <div style="font-family:&#39;Fraunces&#39;,serif;font-size:1.3rem;color:var(--navy);font-weight:500">INVOICE</div>
+              <div style="font-family:var(--mono);font-size:.82rem;color:var(--text-light);margin-top:2px">#CWP-2026-0394</div>
+            </div>
+            <div style="text-align:right;font-size:.85rem;color:var(--text-mid)">
+              <strong>Chattanooga Window Pros</strong><br>
+              423-555-0177 · info@chwp.com<br>
+              <span style="font-size:.78rem;color:var(--text-light)">TN License #WC-44821</span>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:1.5rem;font-size:.88rem">
+            <div><div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:4px">Bill To</div>Anderson Law Group<br>4500 Hixson Pike<br>Hixson, TN 37343</div>
+            <div style="text-align:right"><div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:4px">Details</div><strong>Date:</strong> Mar 17, 2026<br><strong>Due:</strong> Mar 31, 2026<br><strong>Service:</strong> Quarterly window cleaning</div>
+          </div>
+
+          <table class="doc-table">
+            <tbody><tr><th>Service</th><th>Qty</th><th>Rate</th><th style="text-align:right">Total</th></tr>
+            <tr><td>Exterior window cleaning — commercial</td><td>28 panes</td><td class="mono">$4.50/pane</td><td style="text-align:right" class="mono">$126.00</td></tr>
+            <tr><td>Interior window cleaning — commercial</td><td>28 panes</td><td class="mono">$3.00/pane</td><td style="text-align:right" class="mono">$84.00</td></tr>
+            <tr><td>Glass door cleaning (front entrance × 2)</td><td>2</td><td class="mono">$15.00</td><td style="text-align:right" class="mono">$30.00</td></tr>
+          </tbody></table>
+          <div style="text-align:right;padding:12px;background:var(--bg);border-radius:var(--radius-sm);margin-top:4px">
+            <div style="font-size:.85rem;color:var(--text-mid)">Subtotal: $240.00 &nbsp;·&nbsp; Tax (9.25%): $22.20</div>
+            <div style="font-family:&#39;Fraunces&#39;,serif;font-size:1.4rem;color:var(--navy);font-weight:700;margin-top:4px">Total Due: $262.20</div>
+          </div>
+          <div style="text-align:center;margin-top:1rem;padding:10px;background:var(--green-light);border-radius:var(--radius-sm);font-size:.85rem;color:var(--green);font-weight:600">
+            🔗 Pay Online: chwp.com/pay/0394 &nbsp;·&nbsp; Venmo: @ChattWindowPros &nbsp;·&nbsp; Check payable to Chattanooga Window Pros
+          </div>
+          <div style="font-size:.78rem;color:var(--text-light);margin-top:.75rem;text-align:right">⚡ Invoice auto-generated when crew marked job complete via NFC tap at 4:02pm.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doc 3: NFC Job Site Check-In -->
+    <div class="doc-pair">
+      <div class="doc-pair-label"><span class="dot nfc"></span> NFC Job Site Log — Crew Time Tracking</div>
+      <div class="doc-frame">
+        <div class="doc-titlebar">
+          <div class="circles"><span></span><span></span><span></span></div>
+          <span class="fname">nfc_jobsite_log_mar17.json</span>
+        </div>
+        <div class="doc-body">
+          <div class="doc-header">
+            <h3>Job Site NFC Tap Log — March 17</h3>
+            <span class="status-pill info">12 Taps Recorded</span>
+          </div>
+          <table class="doc-table">
+            <tbody><tr><th>Time</th><th>Crew</th><th>Location</th><th>Event</th></tr>
+            <tr><td class="mono">8:01a</td><td>Marcus T.</td><td>Henderson Res.</td><td><span class="log-nfc-badge">NFC</span> Arrived — Job started</td></tr>
+            <tr><td class="mono">8:43a</td><td>Marcus T.</td><td>Henderson Res.</td><td><span class="log-nfc-badge">NFC</span> Job complete — 42 min</td></tr>
+            <tr><td class="mono">9:04a</td><td>Marcus T.</td><td>Rivermont Dental</td><td><span class="log-nfc-badge">NFC</span> Arrived — Job started</td></tr>
+            <tr><td class="mono">10:31a</td><td>Marcus T.</td><td>Rivermont Dental</td><td><span class="log-nfc-badge">NFC</span> Job complete — 1hr 27min</td></tr>
+            <tr><td class="mono">3:02p</td><td>Marcus T.</td><td>Anderson Law</td><td><span class="log-nfc-badge">NFC</span> Arrived — Job started</td></tr>
+            <tr><td class="mono">4:02p</td><td>Marcus T.</td><td>Anderson Law</td><td><span class="log-nfc-badge">NFC</span> Job complete → Invoice auto-sent</td></tr>
+          </tbody></table>
+          <div style="margin-top:1rem;padding:12px 14px;background:var(--bg);border-radius:var(--radius-sm);font-size:.82rem;color:var(--text-mid)">
+            <strong>How it works:</strong> An NFC tag is placed at each job site (on the client's door frame, meter box, or designated spot). Crew taps their phone on arrival and departure. The system logs timestamps, calculates job duration, and triggers the auto-invoice on completion. No manual timesheets, no forgotten clock-ins.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NFC SMART TAGS -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="sec" id="s-nfc">
+
+    <div class="nfc-header">
+      <h2>NFC Smart Tags — A New Service Layer</h2>
+      <p>Inexpensive NFC chips ($0.25–$1.00 each) paired with simple smartphone apps create powerful tracking, verification, and automation systems your clients didn't know they needed.</p>
+    </div>
+
+    <div class="nfc-grid">
+
+      <div class="nfc-card kennel">
+        <div class="industry-tag">Dog Kennel / Pet Services</div>
+        <h4>Kennel Run Tags — Care Logging</h4>
+        <p>NFC tag on each kennel door. Staff tap to log feedings, meds, play sessions, and wellness checks. Creates an auditable care record and auto-generates daily owner updates.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Eliminates handwritten care logs, cuts "How's my dog?" calls by ~70%, builds trust with documented proof of care.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card kennel">
+        <div class="industry-tag">Dog Kennel / Pet Services</div>
+        <h4>Collar Tags — Pet Identity &amp; Check-In</h4>
+        <p>NFC-enabled collar tag for each boarder. Tap to instantly pull up the pet's full profile — feeding instructions, meds, behavior notes, emergency vet — without searching a computer.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> New staff can care for any dog correctly on day one. Zero mix-ups on feeding or medication.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card cpa">
+        <div class="industry-tag">CPA / Accounting</div>
+        <h4>Asset Tags — Client Equipment Tracking</h4>
+        <p>For CPA firms that manage asset depreciation schedules: NFC tags on client equipment (vehicles, machinery, office assets). Tap during site visits to verify the asset exists, log its condition, and update the depreciation record.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Physical asset verification for audits. Eliminates manual inventory counts. Photo + GPS + timestamp in one tap.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card cpa">
+        <div class="industry-tag">CPA / Accounting</div>
+        <h4>Secure Document Handoff Tags</h4>
+        <p>NFC tag on client file folders or document envelopes. When a client drops off tax documents, staff taps the folder to log receipt — creating a timestamped chain of custody. Client gets an auto-confirmation text.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> No more "Did you get my documents?" calls. Auditable chain of custody for sensitive tax records.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card insurance">
+        <div class="industry-tag">Insurance Agency</div>
+        <h4>NFC Business Cards — Instant Quote Requests</h4>
+        <p>Hand a prospect an NFC-enabled business card at a networking event. They tap it to their phone and land on a personalized quote request form pre-filled with the agent's info and a tracking code.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Converts networking into measurable leads. No forgotten business cards — the link lives on their phone.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card insurance">
+        <div class="industry-tag">Insurance Agency</div>
+        <h4>Property Inspection Tags</h4>
+        <p>For commercial property inspections: NFC tag at each inspection point (HVAC unit, electrical panel, roof access). Inspector taps to log condition, take a photo, and timestamp the visit — all feeding directly into the policy file.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Faster inspections, standardized documentation, GPS-verified proof the inspector was on-site.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card service">
+        <div class="industry-tag">Local Service Companies</div>
+        <h4>Job Site Tags — Crew Time &amp; Invoice Trigger</h4>
+        <p>NFC tag at each client location. Crew taps on arrival and departure. The system logs job duration, calculates labor costs, and auto-sends the invoice the moment the job is marked complete.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Eliminates paper timesheets. Invoices go out same-day. GPS proof of service for disputes.</div>
+        </div>
+      </div>
+
+      <div class="nfc-card service">
+        <div class="industry-tag">Local Service Companies</div>
+        <h4>Equipment Maintenance Tags</h4>
+        <p>NFC tag on each piece of equipment (pressure washer, ladder, van). Tap to log usage, report damage, or confirm a maintenance check. AI tracks usage patterns and alerts you before something breaks.</p>
+        <div class="nfc-chip-visual">
+          <div class="chip-icon"><svg viewBox="0 0 24 24"><path d="M6 12a6 6 0 0112 0M9 12a3 3 0 016 0M12 12h.01" stroke-linecap="round"></path></svg></div>
+          <div><strong>ROI:</strong> Prevents costly breakdowns. Tracks equipment across crews. Simplifies fleet/tool management.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ai-note" style="margin-top:2rem">
+      <span class="ai-icon">🛠️</span>
+      <div><strong>What Scenic City Technology Provides:</strong> We supply the NFC tags, configure the software, train your staff, and maintain the system. Most setups take less than a day. Tags are waterproof, durable, and work with any modern smartphone — no special app required for basic functions.</div>
+    </div>
+
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div class="cta">
+    <h3>Want to See This for Your Business?</h3>
+    <p>Let's walk through your actual workflows and show you exactly where AI and NFC can save you time and money.</p>
+    <div class="cta-btns">
+      <a href="tel:4234322121" class="btn gold">Call 423-432-2121</a>
+      <a href="mailto:tim@sceniccitytechnology.net" class="btn outline">Email Tim</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 Scenic City Technology &nbsp;·&nbsp; Chattanooga, TN &nbsp;·&nbsp; <a href="https://sceniccitytechnology.net/">sceniccitytechnology.net</a></p>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('s-'+t.dataset.s).classList.add('active');
+  });
+});
+</script>
+
+
+</body></html>
